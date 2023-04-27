@@ -1,25 +1,72 @@
-import logo from './logo.svg';
 import './App.css';
+// import axios from 'axios';
+import { useEffect, useState } from 'react';
+// import CardProject from './CardProject';
+import Section from './Section';
+  
+//   // const [userId, setUserId] = useState(null);
+//   // const [loading, setLoading] = useState(false);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+//   // useEffect(() => {
+//   //   async function fetchUserId() {
+//   //     setLoading(true);
+//   //     try {
+//   //       const response = await fetch('userId.json');
+//   //       const jsonData = await response.json();
+//   //       setUserId(jsonData);
+//   //       console.log(userId)
+//   //       setLoading(false);
+//   //     } catch (error) {
+//   //       console.error(error);
+//   //     }
+//   //   }
+//   //   fetchUserId();
+//   // }, []);
+
+// const App = () => {
+
+//   const userId="4407bc65-0f1a-425d-b280-23b086a39ee8";
+
+
+
+//   return <div>
+//       <Section sectionType='projects' userId={userId}></Section>
+//         <Section sectionType='work' userId={userId}></Section>
+//         <Section sectionType='education' userId={userId}></Section>
+//     </div>
+// }
+// export default App;
+
+
+
+const App = () => {
+
+  const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+      async function fetchUserId() {
+        try {
+          const response = await fetch('userId');
+          const jsonData = await response.json();
+          setUserId(jsonData.userId);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      fetchUserId();
+    }, []);
+
+    return (
+      <div>
+        {userId && (
+          <div>
+            <Section sectionType='projects' userId={userId}></Section>
+            <Section sectionType='work' userId={userId}></Section>
+            <Section sectionType='education' userId={userId}></Section>
+          </div>
+        )}
+      </div>
+    );
+  }
 
 export default App;
