@@ -41,10 +41,10 @@ import Section from './Section';
 
 const App = () => {
 
-  const userId = process.env.USER_ID;
+  const userId = process.env.REACT_APP_USER_ID;
 
-  console.log('I ran');
-  console.log(userId);
+  console.log('I ran from env-cmdrc secret');
+  // console.log(userId);
   
   // const [userId, setUserId] = useState(null);
 

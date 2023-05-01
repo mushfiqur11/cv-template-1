@@ -1,2 +1,0 @@
-env:
-  USER_ID: ${{ secrets.USERID }}
