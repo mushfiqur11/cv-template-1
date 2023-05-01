@@ -15,7 +15,6 @@ const Section = (props) => {
     const loadInfo = async () => {
       setLoading(true);
       const location = webAddress + '/' + sectionType+ '/' + 'user_id=' + userId;
-      // const location = 'http://localhost:8000/'+ sectionType+ '/' + 'user_id=' + userId;
       const response = await axios.get(location);
       setInfo(response.data);
       setLoading(false);

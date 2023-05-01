@@ -41,20 +41,25 @@ import Section from './Section';
 
 const App = () => {
 
-  const [userId, setUserId] = useState(null);
+  const userId = process.env.USER_ID;
 
-    useEffect(() => {
-      async function fetchUserId() {
-        try {
-          const response = await fetch('userId');
-          const jsonData = await response.json();
-          setUserId(jsonData.userId);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      fetchUserId();
-    }, []);
+  console.log('I ran');
+  console.log(userId);
+  
+  // const [userId, setUserId] = useState(null);
+
+  //   useEffect(() => {
+  //     async function fetchUserId() {
+  //       try {
+  //         const response = await fetch('userId');
+  //         const jsonData = await response.json();
+  //         setUserId(jsonData.userId);
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     }
+  //     fetchUserId();
+  //   }, []);
 
     return (
       <div>
