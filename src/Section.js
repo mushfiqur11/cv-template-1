@@ -14,7 +14,7 @@ const Section = (props) => {
   useEffect(() => {
     const loadInfo = async () => {
       setLoading(true);
-      const location = 'http://3.88.10.206/'+ sectionType+ '/' + 'user_id=' + userId;
+      const location = 'https://buildmeacv.tech/'+ sectionType+ '/' + 'user_id=' + userId;
       // const location = 'http://localhost:8000/'+ sectionType+ '/' + 'user_id=' + userId;
       const response = await axios.get(location);
       setInfo(response.data);
