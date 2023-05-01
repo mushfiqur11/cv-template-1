@@ -8,13 +8,13 @@ function capitalizeFirstLetter(str) {
 }
 
 const Section = (props) => {
-  const { sectionType, userId } = props;
+  const { sectionType, userId, webAddress } = props;
   const [loading, setLoading] = useState(false);
   const [info, setInfo] = useState([]);
   useEffect(() => {
     const loadInfo = async () => {
       setLoading(true);
-      const location = 'https://buildmeacv.tech/'+ sectionType+ '/' + 'user_id=' + userId;
+      const location = webAddress + sectionType+ '/' + 'user_id=' + userId;
       // const location = 'http://localhost:8000/'+ sectionType+ '/' + 'user_id=' + userId;
       const response = await axios.get(location);
       setInfo(response.data);

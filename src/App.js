@@ -60,9 +60,9 @@ const App = () => {
       <div>
         {userId && (
           <div>
-            <Section sectionType='projects' userId={userId}></Section>
-            <Section sectionType='work' userId={userId}></Section>
-            <Section sectionType='education' userId={userId}></Section>
+            <Section sectionType='projects' userId={userId} webAddress='https://buildmeacv.tech'></Section>
+            <Section sectionType='work' userId={userId} webAddress='https://buildmeacv.tech'></Section>
+            <Section sectionType='education' userId={userId} webAddress='https://buildmeacv.tech'></Section>
           </div>
         )}
       </div>
