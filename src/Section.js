@@ -14,13 +14,14 @@ const Section = (props) => {
   useEffect(() => {
     const loadInfo = async () => {
       setLoading(true);
-      const location = webAddress + '/' + sectionType+ '/' + 'user_id=' + userId;
+      const location = `${webAddress}/${sectionType}/user_id=${userId}`;
+      console.log(`${location}`);
       const response = await axios.get(location);
       setInfo(response.data);
       setLoading(false);
     }
     loadInfo();
-  }, [sectionType, userId]);
+  }, [sectionType, userId, webAddress]);
   return (
     <div className="Section">
       {loading ?
