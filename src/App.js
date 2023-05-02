@@ -43,7 +43,7 @@ const App = () => {
 
   const userId = process.env.REACT_APP_USER_ID;
 
-  console.log('I ran from env-cmdrc secret');
+  console.log(`This is a new run`);
   // console.log(userId);
   
   // const [userId, setUserId] = useState(null);
