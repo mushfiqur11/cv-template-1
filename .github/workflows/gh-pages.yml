@@ -3,25 +3,39 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # replace with the name of your main branch
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
-          node-version: '18.2.0' # replace with your desired Node.js version
-      - run: npm install
-      - run: npm run build-dev
-    
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v2
-      - uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./build
