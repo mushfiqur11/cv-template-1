@@ -6,7 +6,7 @@ on:
       - main # replace with the name of your main branch
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,12 +15,7 @@ jobs:
           node-version: '18.2.0' # replace with your desired Node.js version
       - run: npm install
       - run: npm run build-dev
-    
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v2
+      - run: npm run deploy
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
